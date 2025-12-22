@@ -1,0 +1,14 @@
+{
+  "home": {
+    "width": 150,
+    "height": 200
+  },
+  "shop": {
+    "width": 180,
+    "height": 240
+  },
+  "blog": {
+    "width": 120,
+    "height": 160
+  }
+}

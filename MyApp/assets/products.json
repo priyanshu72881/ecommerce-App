@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Rice",
+    "price": 28.85,
+    "image": "https://via.placeholder.com/150?text=Organic+Rice"
+  },
+  {
+    "id": 2,
+    "name": "Chicken Meatballs",
+    "price": 52.85,
+    "image": "https://via.placeholder.com/150?text=Chicken+Meatballs"
+  },
+  {
+    "id": 3,
+    "name": "Kettle Corn",
+    "price": 48.85,
+    "image": "https://via.placeholder.com/150?text=Kettle+Corn"
+  },
+  {
+    "id": 4,
+    "name": "Red Rice",
+    "price": 28.85,
+    "image": "https://via.placeholder.com/150?text=Red+Rice"
+  },
+  {
+    "id": 5,
+    "name": "Classic Crispy",
+    "price": 17.85,
+    "image": "https://via.placeholder.com/150?text=Classic+Crispy"
+  }
+]

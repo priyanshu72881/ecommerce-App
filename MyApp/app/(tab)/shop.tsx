@@ -3,43 +3,30 @@ import { View, Text, TouchableOpacity, Image, FlatList, StyleSheet, Alert } from
 import { MaterialIcons } from "@expo/vector-icons";
 import { useCart } from "../../contexts/CartContext";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   useRegisterPageWishlist,
   setActivePage,
   notifyWishlistChanged,
 } from "../../contexts/PageWishlistBridge";
+import { useCardSize } from "../(drawer)/theme";
+import { useWishlist } from "../../contexts/WishlistContext";
+import { Heart } from "lucide-react-native";
+import products from "../../shop.json";
+import CardItem from "../../components/CardItem";
+import { useColorTheme } from "../../contexts/ColorThemeContext";
 
 export default function Shop() {
   const [activeCategory, setActiveCategory] = useState("All");
   const { addToCart } = useCart();
-  // Page-specific wishlist (local)
-  const pageKey = "Shop";
-  const [wishlist, setWishlist] = React.useState<any[]>([]);
-  const isInWishlist = (id: number) => wishlist.some((i) => i.id === id);
-  const toggleWishlist = (id: number) => {
-    const existing = wishlist.find((i) => i.id === id);
-    if (existing) {
-      setWishlist((prev) => prev.filter((x) => x.id !== id));
-      notifyWishlistChanged(pageKey);
-    } else {
-      const prod = products.find((p) => p.id === id);
-      if (!prod) return;
-      const itemObj = { id: prod.id, name: prod.title, price: prod.price, image: prod.image };
-      setWishlist((prev) => [...prev, itemObj]);
-      notifyWishlistChanged(pageKey);
-    }
-  };
-
-  // register page wishlist
-  useRegisterPageWishlist(pageKey, {
-    getItems: () => wishlist,
-    remove: (id: number) => setWishlist((prev) => prev.filter((x) => x.id !== id)),
-  });
+  const { cardSize } = useCardSize();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const { colors } = useColorTheme();
 
   const navigation = useNavigation();
   React.useEffect(() => {
-    const didFocus = () => setActivePage(pageKey);
-    const didBlur = () => setActivePage(null);
+    const didFocus = () => null;
+    const didBlur = () => null;
     const unsubFocus = (navigation as any)?.addListener?.("focus", didFocus);
     const unsubBlur = (navigation as any)?.addListener?.("blur", didBlur);
     didFocus();
@@ -60,93 +47,27 @@ export default function Shop() {
     Alert.alert("Success", `${item.title} added to cart!`);
   };
 
-
-  const products = [
-    { id: 1, title: "Seeds of Change Organic Red Rice", brand: "NestFood", price: "₹28.85", image: require("../../assets/images/Frame3.png"), discount: "12%", category: "All" },
-    { id: 2, title: "All Natural Chicken Meatballs", brand: "NestFood", price: "₹52.85", image: require("../../assets/images/Frame3.png"), discount: "4%", category: "All" },
-    { id: 3, title: "Sweet & Salty Kettle Corn", brand: "Country Crock", price: "₹48.85", image: require("../../assets/images/Frame3.png"), discount: "24%", category: "All" },
-    { id: 4, title: "Crispy Classic", brand: "Country Crock", price: "₹17.85", image: require("../../assets/images/Frame3.png"), discount: "32%", category: "All" },
-     { id: 5, title: "Seeds of Change Organic Red Rice", brand: "NestFood", price: "₹28.85", image: require("../../assets/images/Frame3.png"), discount: "12%", category: "All" },
-    { id: 6, title: "All Natural Chicken Meatballs", brand: "NestFood", price: "₹52.85", image: require("../../assets/images/Frame3.png"), discount: "4%", category: "All" },
-    { id: 7, title: "Sweet & Salty Kettle Corn", brand: "Country Crock", price: "₹48.85", image: require("../../assets/images/Frame3.png"), discount: "24%", category: "All" },
-    { id: 8, title: "Crispy Classic", brand: "Country Crock", price: "₹17.85", image: require("../../assets/images/Frame3.png"), discount: "32%", category: "All" },
-  ];
-
-  const categories: string[] = [];
-
-  const filtered = products.filter(
-    (p) => activeCategory === "All" || p.category === activeCategory
-  );
-
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Text style={styles.title}>Popular Products</Text>
-
-      {/* Category Tabs */}
-      <View style={styles.categoryRow}>
-        {categories.map((cat) => (
-          <TouchableOpacity
-            key={cat}
-            onPress={() => setActiveCategory(cat)}
-            style={[
-              styles.categoryBtn,
-              activeCategory === cat && styles.categoryActive,
-            ]}
-          >
-            <Text
-              style={[
-                styles.categoryText,
-                activeCategory === cat && styles.categoryActiveText,
-              ]}
-            >
-              {cat}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
 
       {/* Product List */}
       <FlatList
-        data={filtered}
+        data={products}
+        keyExtractor={(item) => item.id.toString()}
         numColumns={2}
-        showsVerticalScrollIndicator={false}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <View style={styles.discountBadge}>
-              <Text style={styles.discountText}>{item.discount} OFF</Text>
-            </View>
-
-            <Image source={item.image} style={styles.image} />
-
-            {/* ⭐ Wishlist Icon */}
-            <TouchableOpacity
-              style={styles.wishlistBtn}
-              onPress={() => toggleWishlist(item.id)}
-            >
-              <MaterialIcons
-                name="favorite"
-                size={22}
-                color={isInWishlist(item.id) ? "red" : "#ccc"} // 🔴 Full red when clicked
-              />
-            </TouchableOpacity>
-
-            <Text style={styles.productTitle} numberOfLines={2}>
-              {item.title}
-            </Text>
-
-            <Text style={styles.brand}>By {item.brand}</Text>
-
-            <View style={styles.row}>
-              <Text style={styles.price}>{item.price}</Text>
-              <TouchableOpacity
-                style={styles.addBtn}
-                onPress={() => handleAddToCart(item)}
-              >
-                <Text style={styles.addBtnText}>Add</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <CardItem
+            id={item.id}
+            image={item.image}
+            title={item.name}
+            price={item.price}
+            page="shop"
+            onToggleWishlist={toggleWishlist}
+            isInWishlist={isInWishlist}
+            onAddToCart={handleAddToCart}
+          />
         )}
       />
     </View>
@@ -163,11 +84,22 @@ const styles = StyleSheet.create({
   categoryText: { color: "#374151" },
   categoryActiveText: { color: "#fff" },
 
-  card: { width: "48%", backgroundColor: "#fff", borderRadius: 14, padding: 10, marginBottom: 18, elevation: 3, position: "relative" },
-  discountBadge: { position: "absolute", top: 10, left: 10, backgroundColor: "#dcfce7", paddingHorizontal: 6, paddingVertical: 3, borderRadius: 6 },
+  card: { backgroundColor: "#fff", borderRadius: 14, overflow: "hidden", elevation: 3, margin: 6 },
+
+  imageContainer: {
+    position: "relative",
+    width: "100%",
+  },
+
+  discountBadge: { position: "absolute", top: 10, left: 10, backgroundColor: "#dcfce7", paddingHorizontal: 6, paddingVertical: 3, borderRadius: 6, zIndex: 10 },
   discountText: { color: "#10b981", fontSize: 12, fontWeight: "600" },
-  image: { width: "100%", height: 130, resizeMode: "cover", borderRadius: 10, marginBottom: 10 },
-  wishlistBtn: { position: "absolute", top: 10, right: 10 },
+  image: { width: "100%", height: "100%", resizeMode: "contain", borderTopLeftRadius: 14, borderTopRightRadius: 14 },
+  wishlistBtn: { position: "absolute", top: 10, right: 10, zIndex: 10 },
+
+  cardContent: {
+    padding: 12,
+  },
+
   productTitle: { fontSize: 14, fontWeight: "600", color: "#111827", marginBottom: 4 },
   brand: { fontSize: 12, color: "#6b7280", marginBottom: 12 },
   row: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },

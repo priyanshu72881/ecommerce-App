@@ -1,5 +1,11 @@
 import { create } from 'zustand';
 
+const cardSizes = {
+  small: { width: 140, minHeight: 210, imageHeight: 80 },
+  medium: { width: 170, minHeight: 250, imageHeight: 110 },
+  large: { width: 200, minHeight: 300, imageHeight: 150 },
+};
+
 interface ThemeStore {
   // Logo & Branding
   logo: string | null;
@@ -21,13 +27,9 @@ interface ThemeStore {
   setFont: (font: string) => void;
 
   // Card Sizes
-  homeCardSize: 'small' | 'medium' | 'large';
-  shopCardSize: 'small' | 'medium' | 'large';
-  blogCardSize: 'small' | 'medium' | 'large';
-
-  setHomeCardSize: (size: 'small' | 'medium' | 'large') => void;
-  setShopCardSize: (size: 'small' | 'medium' | 'large') => void;
-  setBlogCardSize: (size: 'small' | 'medium' | 'large') => void;
+  selectedSize: 'small' | 'medium' | 'large';
+  cardSize: { width: number; minHeight: number; imageHeight: number };
+  setSize: (size: 'small' | 'medium' | 'large') => void;
 
   // Reset to defaults
   resetTheme: () => void;
@@ -41,13 +43,12 @@ const DEFAULT_STATE = {
   accent: '#10B981',
   background: '#FFFFFF',
   font: 'Inter',
-  homeCardSize: 'medium' as const,
-  shopCardSize: 'medium' as const,
-  blogCardSize: 'medium' as const,
+  selectedSize: 'medium' as const,
 };
 
-export const useThemeStore = create<ThemeStore>((set) => ({
+export const useThemeStore = create<ThemeStore>((set, get) => ({
   ...DEFAULT_STATE,
+  cardSize: cardSizes.medium,
 
   setLogo: (logo) => set({ logo }),
   setStoreName: (name) => set({ storeName: name }),
@@ -58,9 +59,7 @@ export const useThemeStore = create<ThemeStore>((set) => ({
   setBackground: (color) => set({ background: color }),
   setFont: (font) => set({ font }),
 
-  setHomeCardSize: (size) => set({ homeCardSize: size }),
-  setShopCardSize: (size) => set({ shopCardSize: size }),
-  setBlogCardSize: (size) => set({ blogCardSize: size }),
+  setSize: (size) => set({ selectedSize: size, cardSize: cardSizes[size] }),
 
-  resetTheme: () => set(DEFAULT_STATE),
+  resetTheme: () => set({ ...DEFAULT_STATE, cardSize: cardSizes.medium }),
 }));

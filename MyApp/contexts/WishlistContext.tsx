@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Wishlist item structure - we keep it flexible so callers can add minimal info (id)
 export interface WishlistItem {
   id: number;
   name?: string;
-  price?: number;
+  price?: number | string;
   image?: any; // local require or uri
 }
 
@@ -15,12 +16,40 @@ interface WishlistContextType {
   removeFromWishlist: (id: number) => void;
   isInWishlist: (id: number) => boolean;
   clearWishlist: () => void;
+  wishlistCount: number;
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<WishlistItem[]>([]);
+
+  // Load from AsyncStorage on mount
+  useEffect(() => {
+    const loadWishlist = async () => {
+      try {
+        const stored = await AsyncStorage.getItem('wishlist');
+        if (stored) {
+          setItems(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.warn('Error loading wishlist', e);
+      }
+    };
+    loadWishlist();
+  }, []);
+
+  // Save to AsyncStorage whenever items change
+  useEffect(() => {
+    const saveWishlist = async () => {
+      try {
+        await AsyncStorage.setItem('wishlist', JSON.stringify(items));
+      } catch (e) {
+        console.warn('Error saving wishlist', e);
+      }
+    };
+    saveWishlist();
+  }, [items]);
 
   const findIndex = (id: number) => items.findIndex((i) => i.id === id);
 
@@ -56,6 +85,8 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }
     setItems([]);
   };
 
+  const wishlistCount = items.length;
+
   return (
     <WishlistContext.Provider
       value={{
@@ -65,6 +96,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }
         removeFromWishlist,
         isInWishlist,
         clearWishlist,
+        wishlistCount,
       }}
     >
       {children}

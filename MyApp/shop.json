@@ -1,0 +1,60 @@
+[
+  { "id": 51, "name": "Casual T-Shirt", "title": "Men Casual T-Shirt", "price": 799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 52, "name": "Printed Shirt", "title": "Men Printed Shirt", "price": 1199, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 53, "name": "Cotton Kurti", "title": "Women Cotton Kurti", "price": 1499, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 54, "name": "Designer Saree", "title": "Women Designer Saree", "price": 2599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 55, "name": "Slim Jeans", "title": "Men Slim Fit Jeans", "price": 1899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 56, "name": "Formal Trouser", "title": "Men Formal Trouser", "price": 1699, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 57, "name": "Palazzo Pants", "title": "Women Palazzo Pants", "price": 1399, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 58, "name": "Summer Dress", "title": "Women Summer Dress", "price": 1999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 59, "name": "Hoodie", "title": "Men Hoodie", "price": 2199, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 60, "name": "Sweatshirt", "title": "Unisex Sweatshirt", "price": 1799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 61, "name": "Checked Shirt", "title": "Men Checked Shirt", "price": 1299, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 62, "name": "Long Kurta", "title": "Women Long Kurta", "price": 1599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 63, "name": "Track Pants", "title": "Men Track Pants", "price": 999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 64, "name": "Anarkali Suit", "title": "Women Anarkali Suit", "price": 2999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 65, "name": "Denim Jacket", "title": "Men Denim Jacket", "price": 3499, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 66, "name": "Shrug", "title": "Women Shrug", "price": 1199, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 67, "name": "Polo T-Shirt", "title": "Men Polo T-Shirt", "price": 899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 68, "name": "Denim Jeans", "title": "Women Denim Jeans", "price": 1899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 69, "name": "Ethnic Kurta", "title": "Men Ethnic Kurta", "price": 1699, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 70, "name": "Ethnic Set", "title": "Women Ethnic Set", "price": 2799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+
+  { "id": 71, "name": "Winter Jacket", "title": "Men Winter Jacket", "price": 3999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 72, "name": "Woolen Sweater", "title": "Women Woolen Sweater", "price": 2499, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 73, "name": "Casual Shorts", "title": "Men Casual Shorts", "price": 699, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 74, "name": "Night Suit", "title": "Women Night Suit", "price": 1599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 75, "name": "Blazer", "title": "Men Blazer", "price": 4599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 76, "name": "Party Gown", "title": "Women Party Gown", "price": 4999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 77, "name": "Sleeveless Jacket", "title": "Men Sleeveless Jacket", "price": 2299, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 78, "name": "Crop Top", "title": "Women Crop Top", "price": 899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 79, "name": "Gym Wear Set", "title": "Men Gym Wear Set", "price": 1999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 80, "name": "Yoga Pants", "title": "Women Yoga Pants", "price": 1299, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+
+  { "id": 81, "name": "Linen Shirt", "title": "Men Linen Shirt", "price": 1499, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 82, "name": "Chiffon Saree", "title": "Women Chiffon Saree", "price": 2899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 83, "name": "Cargo Pants", "title": "Men Cargo Pants", "price": 1799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 84, "name": "Denim Jacket", "title": "Women Denim Jacket", "price": 3299, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 85, "name": "V-Neck T-Shirt", "title": "Men V-Neck T-Shirt", "price": 749, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 86, "name": "Tunic Top", "title": "Women Tunic Top", "price": 1099, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 87, "name": "Wedding Kurta", "title": "Men Wedding Kurta", "price": 3599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 88, "name": "Festive Lehenga", "title": "Women Festive Lehenga", "price": 6999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 89, "name": "Running Shorts", "title": "Men Running Shorts", "price": 799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 90, "name": "Casual Top", "title": "Women Casual Top", "price": 999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 91, "name": "Half Sleeve Shirt", "title": "Men Half Sleeve Shirt", "price": 1099, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 92, "name": "Office Kurti", "title": "Women Office Wear Kurti", "price": 1799, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 93, "name": "Classic Jeans", "title": "Men Classic Jeans", "price": 1999, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 94, "name": "Cotton Top", "title": "Women Cotton Top", "price": 899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 95, "name": "Party Shirt", "title": "Men Party Wear Shirt", "price": 1599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+
+  { "id": 96, "name": "Designer Kurti", "title": "Women Designer Kurti", "price": 2199, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 97, "name": "Track Suit", "title": "Men Track Suit", "price": 2499, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 98, "name": "Winter Coat", "title": "Women Winter Coat", "price": 4599, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": true },
+  { "id": 99, "name": "Casual Blazer", "title": "Men Casual Blazer", "price": 3899, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false },
+  { "id": 100, "name": "Party Top", "title": "Women Party Top", "price": 1399, "category": "shop", "image": "../../assets/images/Frame5.png", "wishlist": false }
+]

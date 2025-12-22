@@ -6,6 +6,7 @@ import { DrawerActions } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
+import { CardSizeProvider } from './theme';
 
 function CustomDrawerContent(props: any) {
   const router = useRouter();
@@ -29,19 +30,29 @@ const DrawerRoot = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
-        screenOptions={{
-          drawerItemStyle: {
-            paddingVertical: 8,
-            marginHorizontal: 0,
-          },
-          drawerLabelStyle: {
-            fontSize: 14,
-            color: '#333',
-          },
-          headerShown: false,  // Hide all default headers
-        }}
-        drawerContent={props => <CustomDrawerContent {...props} />}
-      >
+          screenOptions={{
+            drawerItemStyle: {
+              paddingVertical: 8,
+              marginHorizontal: 0,
+            },
+            drawerLabelStyle: {
+              fontSize: 14,
+              color: '#333',
+            },
+            headerShown: false,  // Hide all default headers
+          }}
+          drawerContent={props => <CustomDrawerContent {...props} />}
+        >
+        {/* Home screen that renders tabs */}
+        <Drawer.Screen
+          name="index"
+          options={{
+            title: 'Home',
+            drawerIcon: ({ color }) => <MaterialIcons name="home" size={20} color={color} />,
+            drawerLabel: 'Home',
+            headerShown: false,
+          }}
+        />
         {/* Hide default Dashboard item, only show in custom drawerContent */}
         <Drawer.Screen
           name="product/index"
